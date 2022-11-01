@@ -1,0 +1,1 @@
+Dans Radiographie, l'affichage du patient affiche tous les attributs du patient, dont le mot de passe. 
