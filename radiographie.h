@@ -1,6 +1,9 @@
 #include <string>
 #include <iostream>
 #include "patient.h"
+#include "cliche.h"
+#include "resultatMedecin.h"
+#include "resultatPatient.h"
 
 using namespace std;
 
@@ -10,13 +13,14 @@ class Radiographie{
         int num_examen;
         string type;
 
-        Patient *patient;
+        Patient *patient;   //pointeur car aggrégation
         
         string id_medecin;
         string date;
         bool state;
-        // RESULTAT MEDECIN
-        // RESULTAT PATIENT
+        
+        MedecinResult *med_result;
+        PatientResult *pat_result;
 
     public:
         Radiographie(int num_exam, string type, Patient *id_patient,string id_med, string date, bool state){
@@ -28,6 +32,9 @@ class Radiographie{
             this->id_medecin = id_med;
             this->date = date;
             this->state = state;
+
+            this->med_result = NULL;    //NULL car pas forcément de compte rendu si la radio est pas encore faite
+            this->pat_result = NULL;
         };
         
 
@@ -81,6 +88,22 @@ class Radiographie{
         void set_state(bool state){
             this->state= state;
         };
+
+
+        void get_med_result(){
+            this->med_result->display();
+        }
+        void set_med_result(MedecinResult *med){
+            this->med_result = med;
+        }
+
+
+        void get_pat_result(){
+            this->pat_result->display();
+        }
+        void set_pat_result(PatientResult *pat){
+            this->pat_result = pat;
+        }
 
 
         void display();

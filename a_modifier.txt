@@ -1,1 +1,13 @@
-Dans Radiographie, l'affichage du patient affiche tous les attributs du patient, dont le mot de passe. 
+class Radiographie :
+
+    L'affichage du patient affiche tous les attributs du patient, dont le mot de passe. 
+
+
+class Cliche :
+
+    Modifier le string image pour que ça corresponde à une radio ??
+
+
+
+
+Gestion des erreurs à lister quand t'en auras la force
