@@ -1,6 +1,10 @@
+#ifndef RESULTATMEDECIN_H
+#define RESULTATMEDECIN_H
+
 #include <iostream>
 #include <string>
 #include <vector>
+#include "cliche.h"
 
 using namespace std;
 
@@ -28,16 +32,18 @@ class MedecinResult {
         }
 
         void get_cr_medecin(){
-            cout << "cr_medecin : "<<this->cr_medecin<<endl;
+            cout << "Doctor report : "<<this->cr_medecin<<endl;
         };
         void set_cr_medecin(string cr){
             this->cr_medecin = cr;
         };
 
 
-        void display(){
+        void medecin_result_display(){
             get_cliche();
             get_cr_medecin();
         };
 
 };
+
+#endif

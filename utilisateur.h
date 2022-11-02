@@ -1,3 +1,6 @@
+#ifndef UTILISATEUR_H
+#define UTILISATEUR_H
+
 #include <string>
 
 using namespace std;
@@ -17,28 +20,30 @@ class Utilisateur {
         };
 
         void get_name(){
-            cout << "Name is " << this->name <<endl;
+            cout << "Name : " << this->name <<endl;
         };
         void set_name(string n){
             this->name = n;
         };
         
         void get_first_name(){
-            cout << "First name is " << this-> first_name <<endl;
+            cout << "First name : " << this-> first_name <<endl;
         };
         void set_first_name(string f){
             this->first_name = f;
         };
 
         void get_password(){
-            cout << "Password is " << this->name <<endl;
+            cout << "Password : " << this->name <<endl;
         };
         void set_password(string p){
             this -> password = p;
         };
         
         
-        void display();
+        void utilisateur_display();
         // void login();
         // void load();
 };
+
+#endif

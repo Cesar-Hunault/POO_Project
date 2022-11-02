@@ -1,3 +1,6 @@
+#ifndef CLICHE_H
+#define CLICHE_H
+
 #include <iostream>
 #include <string>
 
@@ -37,3 +40,5 @@ class Cliche{
             get_num_prise();
         };
 };
+
+#endif

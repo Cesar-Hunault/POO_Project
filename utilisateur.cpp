@@ -4,9 +4,8 @@
 
 using namespace std;
 
-void Utilisateur::display(){
-    cout<<"name : "<< this -> name <<endl;
-    cout<<"first name : "<< this -> first_name <<endl;
-    cout<<"password : "<< this -> password <<endl;
-
+void Utilisateur::utilisateur_display(){
+    this->get_name();
+    this->get_first_name();
+    this->get_password();
 }

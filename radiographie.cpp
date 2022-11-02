@@ -10,12 +10,12 @@ using namespace std;
 //     return os;
 // }
 
-void Radiographie::display(){
-    cout<<"Num exam : "<< this -> num_examen <<endl;
-    cout<<"Type : "<< this -> type <<endl;
+void Radiographie::radiographie_display(){
+    this->get_num_exam();
+    this->get_type();
     this->get_patient();
-    cout<<"Medecin Id : "<< this -> id_medecin <<endl;
-    cout<<"Date : "<< this -> date <<endl;
+    this->get_id_medecin();
+    this->get_date();
     if (this->state){
         cout << "State : radiography is performed"<<endl;
         

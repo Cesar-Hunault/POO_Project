@@ -1,3 +1,6 @@
+#ifndef RADIOGRAPHIE_H
+#define RADIOGRAPHIE_H
+
 #include <string>
 #include <iostream>
 #include "patient.h"
@@ -39,7 +42,7 @@ class Radiographie{
         
 
         void get_num_exam(){
-            cout << "Num exam is "<<this->num_examen<<endl;
+            cout << "Num exam : "<<this->num_examen<<endl;
         };
         void set_num_exam(int num){
             this->num_examen = num;
@@ -47,7 +50,7 @@ class Radiographie{
 
 
         void get_type(){
-            cout << "Radiography type is "<<this->type<<endl;
+            cout << "Radiography type : "<<this->type<<endl;
         };
         void set_type(string type){
             this->type = type;
@@ -55,7 +58,7 @@ class Radiographie{
 
 
         void get_patient(){
-            this->patient->display();
+            this->patient->utilisateur_display();
         }
         void set_patient(Patient *patient){
             this->patient = patient;
@@ -63,7 +66,7 @@ class Radiographie{
 
 
         void get_id_medecin(){
-            cout << "Medecin ID is "<<this->id_medecin<<endl;
+            cout << "Medecin ID : "<<this->id_medecin<<endl;
         };
         void set_id_medecin(int id){
             this->id_medecin = id;
@@ -71,7 +74,7 @@ class Radiographie{
 
 
         void get_date(){
-            cout << "Radiography date is "<<this->date<<endl;
+            cout << "Radiography date : "<<this->date<<endl;
         };
         void set_date(int date){
             this->date = date;
@@ -91,7 +94,7 @@ class Radiographie{
 
 
         void get_med_result(){
-            this->med_result->display();
+            this->med_result->medecin_result_display();
         }
         void set_med_result(MedecinResult *med){
             this->med_result = med;
@@ -99,12 +102,14 @@ class Radiographie{
 
 
         void get_pat_result(){
-            this->pat_result->display();
+            this->pat_result->patient_result_display();
         }
         void set_pat_result(PatientResult *pat){
             this->pat_result = pat;
         }
 
 
-        void display();
+        void radiographie_display();
 };
+
+#endif

@@ -8,6 +8,11 @@ class Cliche :
     Modifier le string image pour que ça corresponde à une radio ??
 
 
+class Radiologue :
+
+    A créer et lier à radiographie
+    add_result de Patient à déplacer ici probablement
+
 
 
 Gestion des erreurs à lister quand t'en auras la force
