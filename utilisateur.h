@@ -34,7 +34,7 @@ class Utilisateur {
         };
 
         void get_password(){
-            cout << "Password : " << this->name <<endl;
+            cout << "Password : " << this->password <<endl;
         };
         void set_password(string p){
             this -> password = p;

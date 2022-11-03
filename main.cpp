@@ -14,9 +14,9 @@ int main () {
     string first_name = "César";
     string password ="mdp bien trop faible";
     
-    Patient patient1 ("25/12/2000", "Homme", name, first_name, password);
+    Patient patient1 (name, first_name, password, "25/12/2000", "Homme");
 
-    Patient patient2 ("08/09/2000", "Homme", "Levergeois", "Romain", "mdp");
+    Patient patient2 ("Levergeois", "Romain", "mdp", "08/09/2000", "Homme");
 
 
     //RADIOGRAPHIES
@@ -62,6 +62,30 @@ int main () {
 
     radiologue1.add_radio_in_list(radio1);
     radiologue1.add_radio_in_list(radio2);
+
+    radiologue1.radio_list_display();
+
+    cout<<"\n##############################1\n"<<endl;
+
+    tuple<Radiographie, Patient> tmp = radiologue1.add_new_radio();
+    Radiographie nouvelle_rad = get<0>(tmp);
+    Patient nouveau_pat = get<1>(tmp);
+
+    cout<<"\n##############################2\n"<<endl;
+    //nouvelle_rad.radiographie_display();
+    
+    //nouveau_pat.patient_display();
+
+    //obligé de le faire à l'extérieur de new_radio(), pourquoi ??
+    radiologue1.add_radio_in_list(nouvelle_rad);
+    
+    radiologue1.radio_list_display();
+    
+    cout<<"\n##############################3\n"<<endl;
+    
+    radiologue1.delete_radio(99);
+
+    cout<<"\n##############################4\n"<<endl;
 
     radiologue1.radio_list_display();
 

@@ -17,9 +17,14 @@ class Patient : public Utilisateur{
 
     public:
 
-        Patient(string birth, string gen, string n, string f, string p) : Utilisateur(n, f, p){
+        Patient(string n, string f, string p, string birth, string gen) : Utilisateur(n, f, p){
             this -> birth_date = birth;
             this -> gender = gen;
+        }
+
+        Patient(const Patient &p) : Utilisateur(p){
+            this -> birth_date = p.birth_date;
+            this -> gender = p.gender;
         }
 
         void get_birth_date(){

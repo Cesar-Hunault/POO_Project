@@ -10,9 +10,29 @@ class Cliche :
 
 class Radiologue :
 
-    A créer et lier à radiographie
-    add_result de Patient à déplacer ici probablement
+    add_result de Patient à déplacer ici probablement ??????
+    
+    add_new_radio :
+        num exam unique
+        nouveau patient ou non
+        add_radio_in_list qui ne marche pas 
 
+
+class Utilisateur :
+    le password casse les couilles à être partout --> Modifier juste le get password ?? peut etre la solution miracle
+
+Faire les méthodes complexes :
+    
+    dans radiologue :
+        Modifier radio
+        affichage spécialisé
+        sauvegarde
+    dans utilisateur : 
+        login
+        load
 
 
 Gestion des erreurs à lister quand t'en auras la force
+
+Main :
+    renommer les nouveau_pat et nouvelle_rad pour que se soit réutilisable

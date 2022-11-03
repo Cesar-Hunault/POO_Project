@@ -26,7 +26,6 @@ class MedecinResult {
                 cliche.display();
             }
         };
-
         void set_cliche(const Cliche & c){
             liste.push_back(c);
         }

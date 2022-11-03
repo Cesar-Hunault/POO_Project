@@ -11,7 +11,7 @@ using namespace std;
 // }
 
 void Radiographie::radiographie_display(){
-    this->get_num_exam();
+    cout << "Num exam : "<<this->get_num_exam()<<endl;
     this->get_type();
     this->get_patient();
     this->get_id_medecin();

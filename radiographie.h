@@ -40,9 +40,20 @@ class Radiographie{
             this->pat_result = NULL;
         };
         
+        //Constructeur de recopie
+        Radiographie(const Radiographie &r){
+            this->num_examen = r.num_examen;
+            this->type = r.type;
+            this->patient = r.patient;
+            this->id_medecin = r.id_medecin;
+            this->date = r.date;
+            this->state = r.state;
+            this->med_result = r.med_result;
+            this->pat_result = r.pat_result;
+        };
 
-        void get_num_exam(){
-            cout << "Num exam : "<<this->num_examen<<endl;
+        int get_num_exam(){
+            return this->num_examen;
         };
         void set_num_exam(int num){
             this->num_examen = num;

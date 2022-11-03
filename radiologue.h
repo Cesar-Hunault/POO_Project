@@ -2,6 +2,7 @@
 #define RADIOLOGUE_H
 
 #include <vector>
+#include <tuple>
 #include "radiographie.h"
 
 using namespace std;
@@ -15,6 +16,10 @@ class Radiologue{
 
         void add_radio_in_list(Radiographie &);
         void radio_list_display();
+
+        tuple<Radiographie, Patient> add_new_radio();
+
+        void delete_radio(int);
 
 };
 
