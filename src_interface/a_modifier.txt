@@ -32,3 +32,6 @@ Gestion des erreurs à lister quand t'en auras la force
 
 Main :
     renommer les nouveau_pat et nouvelle_rad pour que se soit réutilisable
+
+
+compilation de l'interface : g++ interface.cpp -o interface `pkg-config gtkmm-3.0 --cflags --libs` utilisateur.cpp

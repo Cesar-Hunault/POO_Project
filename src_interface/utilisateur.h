@@ -19,29 +19,29 @@ class Utilisateur {
             this->password = p; 
         };
 
-        void get_name(){
-            cout << "Name : " << this->name <<endl;
+        string get_name(){
+            return this->name;
         };
         void set_name(string n){
             this->name = n;
         };
         
-        void get_first_name(){
-            cout << "First name : " << this-> first_name <<endl;
+        string get_first_name(){
+            return this-> first_name;
         };
         void set_first_name(string f){
             this->first_name = f;
         };
 
-        void get_password(){
-            cout << "Password : " << this->password <<endl;
+        string get_password(){
+            return this->password;
         };
         void set_password(string p){
             this -> password = p;
         };
         
         
-        void utilisateur_display();
+        string utilisateur_display();
         // void login();
         // void load();
 };

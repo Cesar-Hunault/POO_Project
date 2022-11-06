@@ -20,27 +20,32 @@ class MedecinResult {
             this->cr_medecin = cr;
         };
 
-        void get_cliche(){
+        string get_cliche(){
+            string result;
             for (int i = 0; i < this->liste.size(); ++i){
                 Cliche cliche = this->liste[i];
-                cliche.display();
+                result += cliche.display();
             }
+            return result;
         };
         void set_cliche(const Cliche & c){
             liste.push_back(c);
         }
 
-        void get_cr_medecin(){
-            cout << "Doctor report : "<<this->cr_medecin<<endl;
+        string get_cr_medecin(){
+            return this->cr_medecin;
         };
         void set_cr_medecin(string cr){
             this->cr_medecin = cr;
         };
 
 
-        void medecin_result_display(){
-            get_cliche();
-            get_cr_medecin();
+        string medecin_result_display(){
+            string s1, s2, result;
+            s1 = this->get_cliche();
+            s2 = "Doctor report : "+this->get_cr_medecin();
+            result = s1 + "\n" + s2 + "\n";
+            return result;
         };
 
 };

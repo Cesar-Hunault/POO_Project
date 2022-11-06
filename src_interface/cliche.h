@@ -19,25 +19,28 @@ class Cliche{
         };
 
 
-        void get_image(){
-            cout << "Image is "<<this->image<<endl;
+        string get_image(){
+           return this->image;
         };
         void set_image(string img){
             this->image = img;
         };
 
 
-        void get_num_prise(){
-            cout << "Num prise is "<<this->num_prise<<endl;
+        int get_num_prise(){
+           return this->num_prise;
         };
         void set_num_prise(int num){
             this->num_prise = num;
         };
 
 
-        void display(){
-            get_image();
-            get_num_prise();
+        string display(){
+            string s1, s2, result;
+            s1 = this->get_image();
+            s2 = this->get_num_prise();
+            result = s1 + "\n" + s2 + "\n";
+            return result;
         };
 };
 

@@ -4,10 +4,13 @@
 
 using namespace std;
 
-void Utilisateur::utilisateur_display(){
-    this->get_name();
-    this->get_first_name();
+string Utilisateur::utilisateur_display(){
+    string result1 = this->name;
+    string result2 = this->first_name;
+    string result3 = result1 + "\n" + result2;
+    
     //this->get_password();
-    cout<<"Password protected"<<endl;
+    // cout<<"Password protected"<<endl;
+    return result3;
 
 }

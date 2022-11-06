@@ -60,68 +60,69 @@ class Radiographie{
         };
 
 
-        void get_type(){
-            cout << "Radiography type : "<<this->type<<endl;
+        string get_type(){
+            return this->type;
         };
         void set_type(string type){
             this->type = type;
         };
 
 
-        void get_patient(){
-            this->patient->utilisateur_display();
-            this->patient->patient_display();
+        string get_patient(){
+            return this->patient->patient_display();
         }
         void set_patient(Patient *patient){
             this->patient = patient;
         }
 
 
-        void get_id_medecin(){
-            cout << "Medecin ID : "<<this->id_medecin<<endl;
+        string get_id_medecin(){
+           return this->id_medecin;
         };
         void set_id_medecin(int id){
             this->id_medecin = id;
         };
 
 
-        void get_date(){
-            cout << "Radiography date : "<<this->date<<endl;
+        string get_date(){
+            return this->date;
         };
         void set_date(int date){
             this->date = date;
         };
 
 
-        void get_state(){
+        string get_state(){
+            string state_string;
             if (this->state){
-                cout << "State : radiography is performed"<<endl;
+                state_string = "State : radiography is performed\n";
             }else{
-                cout << "State : radiography is planned"<<endl;
+                state_string = "State : radiography is planned\n";
             };
+            return state_string;
         };
         void set_state(bool state){
             this->state= state;
         };
 
 
-        void get_med_result(){
-            this->med_result->medecin_result_display();
+        string get_med_result(){
+            return this->med_result->medecin_result_display();
         }
         void set_med_result(MedecinResult *med){
             this->med_result = med;
         }
 
 
-        void get_pat_result(){
-            this->pat_result->patient_result_display();
+        string get_pat_result(){
+            return this->pat_result->patient_result_display();
         }
         void set_pat_result(PatientResult *pat){
             this->pat_result = pat;
         }
 
 
-        void radiographie_display();
+        string radiographie_display();
 };
 
 #endif

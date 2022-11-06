@@ -5,13 +5,17 @@
 
 using namespace std;
 
-void Patient::patient_display(){
-    this->get_name();
-    this->get_first_name();
+string Patient::patient_display(){
+    string s1, s2, s3, s4, result;
+    s1 = "Name : "+this->get_name();
+    s2 = "First name : "+this->get_first_name();
     //this->get_password();
-    cout<<"Password protected"<<endl;
-    this->get_birth_date();
-    this->get_gender();
+    //cout<<"Password protected"<<endl;
+    s3 = "Birth date : "+this->get_birth_date();
+    s4 = "Gender : "+this->get_gender();
+
+    result = s1 + "\n" + s2 + "\n" + s3 + "\n" + s4;
+    return result;
 }
 
 void Patient::add_result(PatientResult &res){
