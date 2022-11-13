@@ -7,32 +7,23 @@ using namespace std;
 
 class Utilisateur {
     protected:
-        string name;
-        string first_name;
+        string id;
         string password;
     
     public:
     
-        Utilisateur(string n, string f, string p){
-            this->name = n;
-            this->first_name = f;
+        Utilisateur(string i, string p){
+            this->id = i;
             this->password = p; 
         };
 
-        string get_name(){
-            return this->name;
+        string get_id(){
+            return this->id;
         };
-        void set_name(string n){
-            this->name = n;
+        void set_id(string i){
+            this->id = i;
         };
         
-        string get_first_name(){
-            return this-> first_name;
-        };
-        void set_first_name(string f){
-            this->first_name = f;
-        };
-
         string get_password(){
             return this->password;
         };
@@ -42,7 +33,7 @@ class Utilisateur {
         
         
         string utilisateur_display();
-        // void login();
+        pair<bool, bool> login(string, string);
         // void load();
 };
 

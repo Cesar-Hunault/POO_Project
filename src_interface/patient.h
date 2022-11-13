@@ -10,6 +10,8 @@ using namespace std;
 
 class Patient : public Utilisateur{
     private:
+        string name;
+        string first_name;
         string birth_date;
         string gender;
 
@@ -17,7 +19,9 @@ class Patient : public Utilisateur{
 
     public:
 
-        Patient(string n, string f, string p, string birth, string gen) : Utilisateur(n, f, p){
+        Patient(string i, string p, string na, string fna, string birth, string gen) : Utilisateur(i, p){
+            this -> name = na;
+            this -> first_name = fna;
             this -> birth_date = birth;
             this -> gender = gen;
         }
@@ -25,6 +29,20 @@ class Patient : public Utilisateur{
         Patient(const Patient &p) : Utilisateur(p){
             this -> birth_date = p.birth_date;
             this -> gender = p.gender;
+        }
+
+        string get_name(){
+            return this-> name;
+        }
+        void set_name(string na){
+            this -> name = na;
+        }
+
+        string get_first_name(){
+            return this-> first_name;
+        }
+        void set_first_name(string fna){
+            this -> first_name = fna;
         }
 
         string get_birth_date(){

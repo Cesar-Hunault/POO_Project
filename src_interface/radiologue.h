@@ -10,10 +10,15 @@ using namespace std;
 class Radiologue{
 
     private:
+        int id_medecin;
         vector<Radiographie *> list;
 
     public:
 
+        Radiologue(int id){
+            this -> id_medecin = id;
+        }
+        
         void add_radio_in_list(Radiographie &);
         void radio_list_display();
 

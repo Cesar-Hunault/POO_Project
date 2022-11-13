@@ -1,0 +1,19 @@
+{
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "files.associations": {
+            "iostream": "cpp",
+            "typeinfo": "cpp",
+            "system_error": "cpp",
+            "*.tcc": "cpp",
+            "deque": "cpp",
+            "string": "cpp",
+            "vector": "cpp",
+            "ostream": "cpp"
+        }
+    }
+}
