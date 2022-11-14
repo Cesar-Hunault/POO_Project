@@ -13,9 +13,9 @@ int main () {
 
     //PATIENTS
     string result, result2; 
-    Patient patient1 ("1", "mdp", "Porcheron", "Lise", "25/12/2000", "Femme");
+    Patient patient1 ("1", "mdp", "Porcheron", "Lise", "06/08/1999", "Femme");
 
-    Patient patient2 ("2", "mdp", "Cornuault", "Anna", "08/09/2000", "Femme");
+    Patient patient2 ("2", "mdp", "Cornuault", "Anna", "05/02/2000", "Femme");
 
     result = patient1.patient_display();
     result2 = patient2.patient_display();
@@ -55,7 +55,7 @@ int main () {
     
 
     string res;
-    res = tmp.patient_display();
+    res = vecpat[0].patient_display();
     cout<< "\n################## result tmp sans boucle \n"<<res<<endl;
     
     file2.close();

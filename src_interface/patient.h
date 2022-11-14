@@ -27,6 +27,8 @@ class Patient : public Utilisateur{
         }
 
         Patient(const Patient &p) : Utilisateur(p){
+            this -> name = p.name;
+            this-> first_name = p.first_name;
             this -> birth_date = p.birth_date;
             this -> gender = p.gender;
         }
