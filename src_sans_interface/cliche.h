@@ -13,12 +13,14 @@ class Cliche{
         string num_prise;
 
     public:
+        //Constructeur ------------------------------------
         Cliche(string img, string num){
             this->image = img;
             this->num_prise = num;
         };
 
 
+        //geteurs et seteurs ------------------------------------
         void get_image(){
             cout << "Image is "<<this->image<<endl;
         };

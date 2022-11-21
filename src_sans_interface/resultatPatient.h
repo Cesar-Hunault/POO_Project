@@ -15,7 +15,8 @@ class PatientResult {
         string cr_patient;
 
     public: 
-        PatientResult(){}
+        //Constructeurs ------------------------------------
+        PatientResult(){};
 
         PatientResult(Cliche &c, string cr){
             this->liste.push_back(c);
@@ -25,8 +26,9 @@ class PatientResult {
         PatientResult(const PatientResult &p){
             this->liste = p.liste;
             this->cr_patient = p.cr_patient; 
-        }
+        };
 
+        //geteurs et seteurs ------------------------------------
         void get_cliche(){
             for (int i = 0; i < this->liste.size(); ++i){
                 Cliche cliche = this->liste[i];
@@ -41,10 +43,10 @@ class PatientResult {
             }
             return result;
         };
-
         void set_cliche(const Cliche & c){
             liste.push_back(c);
-        }
+        };
+
 
         void get_cr_patient(){
             cout << "Patient report : "<<this->cr_patient<<endl;

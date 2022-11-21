@@ -4,12 +4,7 @@
 
 using namespace std;
 
-
-// ostream& operator<<(ostream& os, const Radiographie& obj){
-//     os << obj.patient.display();
-//     return os;
-// }
-
+//Affichage classique
 void Radiographie::radiographie_display(){
     this->get_num_exam();
     this->get_type();

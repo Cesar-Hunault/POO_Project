@@ -15,7 +15,8 @@ class MedecinResult {
         string cr_medecin;
 
     public: 
-        MedecinResult(){}
+        //Constructeurs ------------------------------------
+        MedecinResult(){};
 
         MedecinResult(Cliche &c, string cr){
             this->liste.push_back(c);
@@ -25,8 +26,10 @@ class MedecinResult {
         MedecinResult(const MedecinResult &m){
             this->liste = m.liste;
             this->cr_medecin = m.cr_medecin;
-        }
+        };
 
+
+        //geteurs et seteurs ------------------------------------
         void get_cliche(){
             for (int i = 0; i < this->liste.size(); ++i){
                 Cliche cliche = this->liste[i];
@@ -43,7 +46,8 @@ class MedecinResult {
         };
         void set_cliche(const Cliche & c){
             liste.push_back(c);
-        }
+        };
+
 
         void get_cr_medecin(){
             cout << "Doctor report : "<<this->cr_medecin<<endl;

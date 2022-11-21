@@ -26,6 +26,7 @@ class Radiographie{
         PatientResult *pat_result;
 
     public:
+        //Constructeurs ------------------------------------
         Radiographie(){};
 
         Radiographie(string num_exam, string type, Patient *patient,string id_med, string date, bool state){
@@ -54,12 +55,14 @@ class Radiographie{
             this->pat_result = r.pat_result;
         };
 
+
+        //geteurs et seteurs ------------------------------------
         void get_num_exam(){
             cout << "ID Radiography : "<<this->num_examen<<endl;
         };
-        string get_num_exam_info(){ //utilisé dans Radiologue::delete_radio()
+        string get_num_exam_info(){ 
             return this->num_examen;
-        }
+        };
         void set_num_exam(string num){
             this->num_examen = num;
         };
@@ -78,19 +81,19 @@ class Radiographie{
 
         void get_patient(){
             this->patient->patient_display();
-        }
+        };
         void set_patient(Patient *patient){
             this->patient = patient;
-        }
+        };
         string get_patient_id(){
             return this->patient->get_id_info();
-        }
+        };
 
 
         void get_id_medecin(){
             cout << "ID doctor : "<<this->id_medecin<<endl;
         };
-        string get_id_medecin_info(){   //utilisé dans le main
+        string get_id_medecin_info(){ 
             return this->id_medecin;
         };
         void set_id_medecin(string id){
@@ -126,30 +129,30 @@ class Radiographie{
 
         void get_med_result(){
             this->med_result->medecin_result_display();
-        }
+        };
         string get_med_result_info(){
             string result;
             result += "\n"+this->med_result->get_cliche_info();
             result += this->med_result->get_cr_medecin_info();
             return result;
-        }
+        };
         void set_med_result(MedecinResult *med){
             this->med_result = med;
-        }
+        };
 
 
         void get_pat_result(){
             this->pat_result->patient_result_display();
-        }
+        };
         void set_pat_result(PatientResult *pat){
             this->pat_result = pat;
-        }
+        };
         string get_pat_result_info(){
             string result;
             result += this->pat_result->get_cliche_info();
             result += this->pat_result->get_cr_patient_info();
             return result;
-        }
+        };
 
 
         void radiographie_display();

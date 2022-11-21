@@ -14,6 +14,7 @@ void Utilisateur::utilisateur_display(){
     this->get_password();
 }
 
+//return une paire de booléen permettant de connaitre la validité des identifiants de connexion et la classe de l'utilisateur : radiologue ou patient 
 pair<bool, bool> Utilisateur::login(){
 
     ifstream file("BD_login.txt");
@@ -25,7 +26,7 @@ pair<bool, bool> Utilisateur::login(){
     while (getline(file, line))
     {
         if ( line[0]!='#' && line[0]!= '\n'){
-            int sep = line.find(';');
+            int sep = line.find(';'); //séparateurs propres à notre base de données
             int sep2 = line.find('/');
 
             id_verif = line.substr(0, sep);
@@ -47,14 +48,16 @@ pair<bool, bool> Utilisateur::login(){
     return login;
 }
 
+//Charge tous les patients enregistrés dans la base de données dans un vecteur de patients
 vector<Patient> Utilisateur::load_patient(){
+
     ifstream file2("BD_patient.txt");
     string fid, fpassword, fname, ffname, fbirth, fgen;
     vector<Patient> vecpat;
 
-    Patient tmp("0", "0", "0", "0", "0", "0");
+    Patient tmp;
 
-
+    //Lecture de la base de données : facile car toujours 6 informations 
     while (file2 >> fid >> fpassword >> fname >> ffname >> fbirth >> fgen){
         tmp.set_id(fid);
         tmp.set_password(fpassword);
@@ -72,43 +75,49 @@ vector<Patient> Utilisateur::load_patient(){
     return vecpat;
 }
 
+//Charge toutes les radiographies enregistrées dans la base de données dans un vecteur de radiographies
 tuple<vector<Radiographie>, vector<MedecinResult>, vector<PatientResult>, vector<int>> Utilisateur::load_radiography(vector<Patient> &vecpat){
-     ifstream file4("BD_radiographies.txt");
 
-    string s2, line;
+    ifstream file4("BD_radiographies.txt");
+
+    string id_patient, line;
+
     vector<vector<string>> lecture;
     vector<string>lectmp;
+
     vector<Radiographie> vecrad;
+    vector<MedecinResult> vec_med_res;
+    vector<PatientResult> vec_pat_res;
+
     Patient *cherchepatient;
     Radiographie radtmp;
     MedecinResult med_res_tmp;
     PatientResult pat_res_tmp;
 
-    vector<MedecinResult> vec_med_res;
-    vector<PatientResult> vec_pat_res;
-
     vector<int> liste_indice;
 
     bool fbool;
 
+    //Besoin de trouver le séparateur des radiographies car le nombre de ligne qui les composent est variable
+    //séparateur = '}' à la fin d'une radiographie
     while(getline(file4, line)){
         lectmp.push_back(line);
         if (line[0]=='}'){
-            lectmp.pop_back();
-            lecture.push_back(lectmp);
+            lectmp.pop_back();  //on retire la ligne du séparateur
+            lecture.push_back(lectmp);  
             lectmp.clear();
         }
     }
 
     for (int i=0; i<lecture.size(); i++){
 
-        if (lecture[i].size()==6){
+        if (lecture[i].size()==6){ //si taille du vecteur = 6 alors la radiographie n'a pas encore été faite, il n'y a pas de résultats qui lui sont attribuée
 
             radtmp.set_num_exam(lecture[i][0]);
             radtmp.set_type(lecture[i][1]);
-            s2 = lecture[i][2];
-            for(auto i = vecpat.begin(); i != vecpat.end();){
-                if ((*i).get_id_info()==s2){
+            id_patient = lecture[i][2];
+            for(auto i = vecpat.begin(); i != vecpat.end();){   //Recherche du patient à partir de la base de données vecpat qui doit être chargée avant celle ci
+                if ((*i).get_id_info()==id_patient){     //syntaxe pour obtenir accès à la méthode par l'itérateur : https://stackoverflow.com/questions/63369486/c-cant-access-a-public-attribute-in-a-class-that-is-returned-by-the-vectors
                     cherchepatient = &(*i);
                     break;
                 } else {
@@ -125,19 +134,20 @@ tuple<vector<Radiographie>, vector<MedecinResult>, vector<PatientResult>, vector
                 fbool = false;
             }
             radtmp.set_state(fbool);
-
+            
+            //pas de resultats donc push back de resultats vides dans les vecteurs associés. Permet de garder la continuité de l'indice utilisé pour associer les resultats à l'extérieur de cette fonction
             vec_med_res.push_back(med_res_tmp);
             vec_pat_res.push_back(pat_res_tmp);
 
             vecrad.push_back(radtmp);
 
-        } else {
+        } else { //state = performed donc il faut trouver le nombre de clichés associés 
 
             radtmp.set_num_exam(lecture[i][0]);
             radtmp.set_type(lecture[i][1]);
-            s2 = lecture[i][2];
+            id_patient = lecture[i][2];
             for(auto i = vecpat.begin(); i != vecpat.end();){
-                if ((*i).get_id_info()==s2){
+                if ((*i).get_id_info()==id_patient){
                     cherchepatient = &(*i);
                     break;
                 } else {
@@ -155,7 +165,7 @@ tuple<vector<Radiographie>, vector<MedecinResult>, vector<PatientResult>, vector
             }
             radtmp.set_state(fbool);
 
-            //recupération du nombre de ligne qui reste pour créer les résultats
+            //recupération du nombre de ligne qui reste pour créer les résultats. Les 6 premières lignes sont toujours les mêmes, on retrouve ensuite forcément 2 lignes de compte rrendu : un pour le patient et un pour le radiologue, et une liste de cliché, égale pour le radiologue et le patient, ce qui permet les calculs suivants : 
             int nombre_resultat = lecture[i].size()-6;
             int nombre_cliche = (nombre_resultat-2)/2;
             
@@ -180,8 +190,10 @@ tuple<vector<Radiographie>, vector<MedecinResult>, vector<PatientResult>, vector
             vec_pat_res.push_back(pat_res_tmp);
 
             liste_indice.push_back(i);
+
             // radtmp.set_med_result(&vec_med_res[i]);
             // radtmp.set_pat_result(&vec_pat_res[i]);
+            //Ne marche pas ici, à faire à l'extérieur avec l'aide de la liste d'indices
 
             vecrad.push_back(radtmp);
         }
