@@ -10,10 +10,10 @@ class Cliche{
 
     private:
         string image;
-        int num_prise;
+        string num_prise;
 
     public:
-        Cliche(string img, int num){
+        Cliche(string img, string num){
             this->image = img;
             this->num_prise = num;
         };
@@ -21,6 +21,9 @@ class Cliche{
 
         void get_image(){
             cout << "Image is "<<this->image<<endl;
+        };
+        string get_image_info(){
+            return this->image;
         };
         void set_image(string img){
             this->image = img;
@@ -30,7 +33,10 @@ class Cliche{
         void get_num_prise(){
             cout << "Num prise is "<<this->num_prise<<endl;
         };
-        void set_num_prise(int num){
+        string get_num_prise_info(){
+            return this->num_prise;
+        };
+        void set_num_prise(string num){
             this->num_prise = num;
         };
 
@@ -38,6 +44,13 @@ class Cliche{
         void display(){
             get_image();
             get_num_prise();
+        };
+        string display_info(){
+            string result;
+            result += this->get_image_info();
+            result += "\n"+this->get_num_prise_info()+"\n";
+
+            return result;
         };
 };
 

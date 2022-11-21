@@ -13,7 +13,7 @@ using namespace std;
 class Radiographie{
 
     private:
-        int num_examen;
+        string num_examen;
         string type;
 
         Patient *patient;   //pointeur car aggrégation
@@ -26,11 +26,13 @@ class Radiographie{
         PatientResult *pat_result;
 
     public:
-        Radiographie(int num_exam, string type, Patient *id_patient,string id_med, string date, bool state){
+        Radiographie(){};
+
+        Radiographie(string num_exam, string type, Patient *patient,string id_med, string date, bool state){
             this->num_examen = num_exam;
             this->type = type;
 
-            this->patient = id_patient;
+            this->patient = patient;
 
             this->id_medecin = id_med;
             this->date = date;
@@ -52,10 +54,13 @@ class Radiographie{
             this->pat_result = r.pat_result;
         };
 
-        int get_num_exam(){
-            return this->num_examen;
+        void get_num_exam(){
+            cout << "ID Radiography : "<<this->num_examen<<endl;
         };
-        void set_num_exam(int num){
+        string get_num_exam_info(){ //utilisé dans Radiologue::delete_radio()
+            return this->num_examen;
+        }
+        void set_num_exam(string num){
             this->num_examen = num;
         };
 
@@ -63,24 +68,32 @@ class Radiographie{
         void get_type(){
             cout << "Radiography type : "<<this->type<<endl;
         };
+        string get_type_info(){
+            return this->type;
+        };
         void set_type(string type){
             this->type = type;
         };
 
 
         void get_patient(){
-            this->patient->utilisateur_display();
             this->patient->patient_display();
         }
         void set_patient(Patient *patient){
             this->patient = patient;
         }
+        string get_patient_id(){
+            return this->patient->get_id_info();
+        }
 
 
         void get_id_medecin(){
-            cout << "Medecin ID : "<<this->id_medecin<<endl;
+            cout << "ID doctor : "<<this->id_medecin<<endl;
         };
-        void set_id_medecin(int id){
+        string get_id_medecin_info(){   //utilisé dans le main
+            return this->id_medecin;
+        };
+        void set_id_medecin(string id){
             this->id_medecin = id;
         };
 
@@ -88,7 +101,10 @@ class Radiographie{
         void get_date(){
             cout << "Radiography date : "<<this->date<<endl;
         };
-        void set_date(int date){
+        string get_date_info(){
+            return this->date;
+        };
+        void set_date(string date){
             this->date = date;
         };
 
@@ -100,6 +116,9 @@ class Radiographie{
                 cout << "State : radiography is planned"<<endl;
             };
         };
+        bool get_state_info(){
+            return this->state;
+        };
         void set_state(bool state){
             this->state= state;
         };
@@ -107,6 +126,12 @@ class Radiographie{
 
         void get_med_result(){
             this->med_result->medecin_result_display();
+        }
+        string get_med_result_info(){
+            string result;
+            result += "\n"+this->med_result->get_cliche_info();
+            result += this->med_result->get_cr_medecin_info();
+            return result;
         }
         void set_med_result(MedecinResult *med){
             this->med_result = med;
@@ -118,6 +143,12 @@ class Radiographie{
         }
         void set_pat_result(PatientResult *pat){
             this->pat_result = pat;
+        }
+        string get_pat_result_info(){
+            string result;
+            result += this->pat_result->get_cliche_info();
+            result += this->pat_result->get_cr_patient_info();
+            return result;
         }
 
 

@@ -1,0 +1,49 @@
+1
+X-ray
+1
+1
+01/01/2023
+0
+}
+2
+X-ray
+2
+1
+01/09/2022
+1
+radio 1
+n°1
+radio 2
+n°2
+radio 3
+n°3
+rien à signaler mais avec des mots scientifiques
+radio 1
+n°1
+radio 2
+n°2
+radio 3
+n°3
+RAS
+}
+3
+X-ray
+1
+2
+01/01/2023
+0
+}
+4
+MRI
+2
+1
+25/12/2025
+0
+}
+5
+Ultrasound
+2
+1
+05/12
+0
+}
