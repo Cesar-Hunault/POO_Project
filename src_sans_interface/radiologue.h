@@ -7,24 +7,31 @@
 
 using namespace std;
 
-class Radiologue{
+class Radiologue : public Utilisateur{
 
     private:
-        int id_medecin; //int ou string comme tous les autres, à voir
+        
         vector<Radiographie *> list;
 
     public:
         //Constructeur ------------------------------------
-        Radiologue(int id){
-            this -> id_medecin = id;
+        Radiologue(string i, string p): Utilisateur(i, p){
         };
 
         //geteurs et seteurs ------------------------------------
         void get_id_medecin(){
-            cout<< "Doctor ID :" << this->id_medecin<<endl;
+            cout<< "Doctor ID :" << this->id<<endl;
         };
-        int set_id_medecin(int id){
-            return this->id_medecin = id;
+        string set_id_medecin(string id){
+            return this->id = id;
+        };
+
+
+        void get_password_medecin(){
+            cout<<"Doctor password :" << this->password<<endl;
+        }
+        string set_password_medecin(string p){
+            return this->password = p;
         };
 
 
@@ -38,6 +45,7 @@ class Radiologue{
             this->list.clear();
         };
 
+        //Fonctions autre ---------------------------------------
         //Affichage de la liste de radio
         void radio_list_display();
 
@@ -55,6 +63,8 @@ class Radiologue{
         void save_new_radio(Radiographie &);
         void save_all_radio(vector<Radiographie> &);
         void save_all_patients(vector<Patient> &);
+
+        bool switch_verification(string, int);
 
 };
 

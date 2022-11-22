@@ -36,7 +36,7 @@ void Patient::result_display(){
             cout<<"\n"<<endl;
             resultats[i]->get_pat_result();
         } else {
-            cout<<"\nNo result at the moment!"<<endl;
+            cout<<"\nNo result at the moment!\n"<<endl;
         }
     }
 }

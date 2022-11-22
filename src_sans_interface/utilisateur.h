@@ -50,11 +50,13 @@ class Utilisateur {
         };
         
         
+        //Fonctions autre ---------------------------------------
         void utilisateur_display();
 
         pair<bool, bool> login();
         vector<Patient> load_patient();
         tuple<vector<Radiographie>, vector<MedecinResult>, vector<PatientResult>, vector<int>> load_radiography(vector<Patient> &);
+        void add_new_patient_in_login(Patient &);
 };
 
 #endif

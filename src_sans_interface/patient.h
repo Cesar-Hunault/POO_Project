@@ -81,6 +81,7 @@ class Patient : public Utilisateur{
         }; 
 
 
+        //Fonctions autre ---------------------------------------
         void patient_display();
 
         void load_result(vector<Radiographie>&);

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <limits>
 #include "radiographie.h"
 #include "radiologue.h"
 // #include "resultatPatient.h"
@@ -84,10 +85,14 @@ int main () {
         cout<<"\nLog as a Radiologist"<<endl;
         cout<<"ID : "<<id<<endl;
 
-        Radiologue radiologue(stoi(id));
+        Radiologue radiologue(id, password);
                 
         //Menu d'action --------------------------------------------
-        int choice;
+        char user_input[10];
+        // string user_input;
+        char choice;
+        bool verification = false;
+
         do
         {
             cout<<"\n\nChoose an action :"<<endl;
@@ -100,12 +105,14 @@ int main () {
             cout<<"7 -\tQuitter!"<<endl;
 
             cin>>choice;
+            cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 
             switch (choice)
             {
-            case 1:
-                {//accolades pour pouvoir instancier des variables dans un case de switch
-                    int display_choice;
+            case '1':
+                {   //Affichage des radiographies -----------------------------------
+                    //accolades pour pouvoir instancier des variables dans un case de switch
+                    char display_choice;
                     do
                     {
                         cout<<"\n\nMode d'affichage :"<<endl;
@@ -114,10 +121,13 @@ int main () {
                         cout<<"3 -\tChercher par identifiant de patient"<<endl;
                         cout<<"4 -\tChercher par date"<<endl;
                         cout<<"5 -\tQuitter"<<endl;
+
                         cin>>display_choice;
+                        cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
                         switch (display_choice)
                         {
-                        case 1:
+                        case '1':
                             radiologue.clear_list(); //Nettoyage de la liste de radio dépendamment du filtre voulu, répété à chaque choix
                             for (int i=0; i<vecrad.size(); i++){
                                 if(vecrad[i].get_id_medecin_info() == id){
@@ -128,7 +138,7 @@ int main () {
                         
                             break;
 
-                        case 2:
+                        case '2':
                         {
                             string num_exam;
                             cout<<"Numéro d'examen :"<<endl;
@@ -144,7 +154,7 @@ int main () {
 
                             break;
                         }
-                        case 3:
+                        case '3':
                         {
                             string pat_id;
                             cout<<"Patient ID :"<<endl;
@@ -160,7 +170,7 @@ int main () {
 
                             break;
                         }
-                        case 4:
+                        case '4':
                         {
                             string date;
                             cout<<"Date :"<<endl;
@@ -177,21 +187,21 @@ int main () {
                             break;
                         }
 
-                        case 5:
+                        case '5':
                             break;
                         default:
-                            cout<<"Bad choice"<<endl;
+                            cout<<"\n##### Bad choice #####"<<endl;
                             break;
                         }
 
-                    } while (display_choice!=5);
+                    } while (display_choice != '5');
 
                     break;
                 }
 
-            case 2:
-                {
-                    //Ajout d'une radiographie -----------------------------------
+            case '2':
+                {   //Ajout d'une radiographie -----------------------------------
+                    
                     Radiographie return_radio;
                     Patient return_patient;
                     string new_patient; //Permet d'obtenir l'info si un nouveau patient a été créé facilement au cours de la création d'une radiographie
@@ -205,8 +215,9 @@ int main () {
                     last_radio_id = stoi(return_radio.get_num_exam_info());
 
 
-                    if(new_patient=="1"){       //mettre à jour la base de données patient et radiographie sans réécrire par dessus
+                    if(new_patient=="1"){       //mettre à jour la base de données patient et login sans réécrire par dessus
                         radiologue.save_new_patient(return_patient);
+                        radiologue.add_new_patient_in_login(return_patient);
                     }
 
                     radiologue.save_new_radio(return_radio);
@@ -237,7 +248,7 @@ int main () {
                     break;
                 }
             
-            case 3:
+            case '3':
                 {   //Suppression d'une radiographie -----------------------------------
                     string identifiant;
                     cout<<"Identifiant de la radiographie à supprimer :"<<endl;
@@ -252,7 +263,7 @@ int main () {
                     break;
                 }
 
-            case 4:
+            case '4':
                 {   //Modification d'une radiographie -----------------------------------
                     string identifiant;
                     Radiographie tmp; //copie la radio voulue, la modifie et la remplace dans le vecteur vecrad
@@ -275,14 +286,14 @@ int main () {
                     
                 }
 
-            case 5:
-                //Sauvegarde des données, pas très utille car tout est sauvegardé à la fin des actions précédentes -----------------------------------
+            case '5':
+                    //Sauvegarde des données, pas très utille car tout est sauvegardé à la fin des actions précédentes -----------------------------------
                 radiologue.save_all_radio(vecrad);
                 radiologue.save_all_patients(vecpat);
                 cout<<"\n### Changes Saved ###"<<endl;
                 break;
             
-            case 6:
+            case '6':
                 {   // Reload les bases de données à jour -----------------------------------
                     vecpat = utilisateur.load_patient();
                     tie(vecrad, vec_med_res, vec_pat_res, liste_indice) = utilisateur.load_radiography(vecpat);
@@ -308,15 +319,15 @@ int main () {
                     break;
                 }
 
-            case 7: 
+            case '7': 
                 break;      
 
             default:
-                cout<<"bad choice"<<endl;
+                cout<<"\n##### Bad choice #####"<<endl;
                 break;
             }
             
-        } while (choice != 7);
+        } while (choice != '7');
 
     }
 

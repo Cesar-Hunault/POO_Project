@@ -204,3 +204,11 @@ tuple<vector<Radiographie>, vector<MedecinResult>, vector<PatientResult>, vector
     return make_tuple(vecrad, vec_med_res, vec_pat_res, liste_indice);
 }
 
+void Utilisateur::add_new_patient_in_login(Patient &patient){
+
+    ofstream file1("BD_login.txt", ofstream::app); 
+
+    file1 << '\n' <<patient.get_id_info() <<';' << patient.get_password_info() << "/false";
+
+    file1.close();
+}

@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include "string.h"
 #include "radiologue.h"
 #include "radiographie.h"
 
@@ -62,6 +63,7 @@ tuple<Radiographie, Patient, string> Radiologue::add_new_radio(int last_patient_
         cin>>password;
         
         ptr_patient= new Patient(id_patient, password, name, first_name, birth_date, gender); //Initialisation du nouveau patient 
+        
     }
     if (new_patient=="0"){
         cout<<"Patient ID :"<<endl;
@@ -97,7 +99,7 @@ tuple<Radiographie, Patient, string> Radiologue::add_new_radio(int last_patient_
         break;
     }
 
-    med_id = to_string(this->id_medecin); //à modifier si le med_id devient un string dans le futur, à voir  
+    med_id = this->id;  
 
     cout<<"Date of radiography : jj/mm/aaaa"<<endl;
     cin>>rad_date;
@@ -355,4 +357,26 @@ void Radiologue::save_all_patients(vector<Patient> &vecpat){
     }
     
     file1.close();
+}
+
+
+bool Radiologue::switch_verification(string user_input, int choice){
+    
+    const char *char_user_input = user_input.c_str();
+
+    bool verification = false;
+    string return_user_input;
+    if (strlen(char_user_input) > 2){
+        cout<<"Invalid strlen()"<<endl;
+        return verification;
+    }
+
+    if (sscanf(char_user_input, "%d", &choice) != 1){
+        cout<<"Invalid sscanf()"<<endl;
+        return verification;
+    }
+
+    verification = true;
+    return verification;
+
 }
