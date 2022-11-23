@@ -34,4 +34,5 @@ Main :
     renommer les nouveau_pat et nouvelle_rad pour que se soit réutilisable
 
 
-compilation de l'interface : g++ interface.cpp -o interface `pkg-config gtkmm-3.0 --cflags --libs` utilisateur.cpp
+compilation de l'interface : g++ interface_main.cpp -o interface `pkg-config gtkmm-3.0 --cflags --libs` utilisateur.cpp patient.cpp interface_login.cpp interface_med.cpp interface_pat.cpp 
+v2 : g++ interface_main.cpp -o interface `pkg-config gtkmm-3.0 --cflags --libs` utilisateur.cpp patient.cpp radiologue.cpp radiographie.cpp interface_login.cpp interface_pat.cpp

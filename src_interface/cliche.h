@@ -10,36 +10,48 @@ class Cliche{
 
     private:
         string image;
-        int num_prise;
+        string num_prise;
 
     public:
-        Cliche(string img, int num){
+        //Constructeur ------------------------------------
+        Cliche(string img, string num){
             this->image = img;
             this->num_prise = num;
         };
 
 
-        string get_image(){
-           return this->image;
+        //geteurs et seteurs ------------------------------------
+        void get_image(){
+            cout << "Image is "<<this->image<<endl;
+        };
+        string get_image_info(){
+            return this->image;
         };
         void set_image(string img){
             this->image = img;
         };
 
 
-        int get_num_prise(){
-           return this->num_prise;
+        void get_num_prise(){
+            cout << "Num prise is "<<this->num_prise<<endl;
         };
-        void set_num_prise(int num){
+        string get_num_prise_info(){
+            return this->num_prise;
+        };
+        void set_num_prise(string num){
             this->num_prise = num;
         };
 
 
-        string display(){
-            string s1, s2, result;
-            s1 = this->get_image();
-            s2 = this->get_num_prise();
-            result = s1 + "\n" + s2 + "\n";
+        void display(){
+            get_image();
+            get_num_prise();
+        };
+        string display_info(){
+            string result;
+            result += this->get_image_info();
+            result += "\n"+this->get_num_prise_info()+"\n";
+
             return result;
         };
 };

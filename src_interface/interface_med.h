@@ -3,12 +3,14 @@
 
 #include <gtkmm.h>
 
-
-class FenetreRadiologue : public Gtk::Window{
+class FenetreRadiologue : public Fenetre_login {
     
     public:
         FenetreRadiologue();
+        void liste_radio_on_button_clicked();
+
     private:
+        //composants de la page d'acceuil 
         Gtk::HBox boiteh_container;
         Gtk::VButtonBox boiteBouton_choix_menu;
         Gtk::HBox boiteh_affichage;
@@ -20,6 +22,11 @@ class FenetreRadiologue : public Gtk::Window{
         Gtk::Button bouton_reset_affichage;
 
         Gtk::Label espace_affichage;
+
+        //composants de l''affichage de la liste de radiographie
+        Gtk::HBox boiteh_radio_list_container;
+        Gtk::Label radio_list_label;
+
 
 
 

@@ -15,25 +15,43 @@ class PatientResult {
         string cr_patient;
 
     public: 
+        //Constructeurs ------------------------------------
+        PatientResult(){};
+
         PatientResult(Cliche &c, string cr){
             this->liste.push_back(c);
             this->cr_patient = cr;
         };
+        
+        PatientResult(const PatientResult &p){
+            this->liste = p.liste;
+            this->cr_patient = p.cr_patient; 
+        };
 
-        string get_cliche(){
+        //geteurs et seteurs ------------------------------------
+        void get_cliche(){
+            for (int i = 0; i < this->liste.size(); ++i){
+                Cliche cliche = this->liste[i];
+                cliche.display();
+            }
+        };
+        string get_cliche_info(){
             string result;
             for (int i = 0; i < this->liste.size(); ++i){
                 Cliche cliche = this->liste[i];
-                result += cliche.display();
+                result += cliche.display_info();
             }
             return result;
         };
-
         void set_cliche(const Cliche & c){
             liste.push_back(c);
-        }
+        };
 
-        string get_cr_patient(){
+
+        void get_cr_patient(){
+            cout << "Patient report : "<<this->cr_patient<<endl;
+        };
+        string get_cr_patient_info(){
             return this->cr_patient;
         };
         void set_cr_patient(string cr){
@@ -41,11 +59,15 @@ class PatientResult {
         };
 
 
+        // void patient_result_display(){
+        //     get_cliche();
+        //     get_cr_patient();
+        // };
+
         string patient_result_display(){
-            string s1, s2, result;
-            s1 = this->get_cliche();
-            s2 = "Report for patient : "+this->get_cr_patient();
-            result = s1 + "\n" + s2 + "\n";
+            string result;
+            result += this->get_cliche_info();
+            result += "Patient report : "+this->get_cr_patient_info();
             return result;
         };
 
