@@ -9,4 +9,4 @@ L'ensemble de l'implémentation est fonctionnelle pour la version s'exécutant d
 
 Graphique UML présentant l'architecture de l'application: 
 
-![alt text](https://github.com/Cesar-Hunault/POO_Project/blob/master/UML graph.svg?raw=true)
+![alt text](https://github.com/Cesar-Hunault/POO_Project/blob/master/UML_graph.svg?raw=true)
