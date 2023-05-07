@@ -1,12 +1,11 @@
-# Logiciel de gestion d'un centre de radiographie fictif
+# Software for managing a fictitious X-ray center
 
-Implémentation d'un logiciel permettant aux praticiens de gérer efficacement les dossiers des patients et d'aider au suivi et au diagnostic.
+Implementation of a software that allows practitioners to efficiently manage patient files and assist in follow-up and diagnosis.
 
-Ce logiciel rempli l'ensemble du cahier des charges demandé, à savoir l'ajout, la suppression, l'affichage des caractéristiques des examens par patient, par date, par numéro
-d'examen, ainsi que la possibilité de charger/sauvegarder la listes des radiographies depuis et vers un fichier.
+This software fulfills all the requested specifications, i.e. adding, deleting, displaying the characteristics of the examinations by patient, by date, by examination number, as well as the possibility of loading/saving the list of X-rays from/to a file.
 
-L'ensemble de l'implémentation est fonctionnelle pour la version s'exécutant dans un terminal (repertoire src_sans_interface). Une version graphique est implémentée avec gtkmm mais est encore incomplète. 
+The whole implementation is functional for the version running in a terminal (src_sans_interface directory). A graphical version is implemented with gtkmm but is still incomplete.
 
-Graphique UML présentant l'architecture de l'application: 
+UML diagram presenting the architecture of the application: 
 
 ![alt text](https://github.com/Cesar-Hunault/POO_Project/blob/master/UML_graph.svg?raw=true)
